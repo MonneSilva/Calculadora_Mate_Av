@@ -8,22 +8,22 @@ import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
 
 public class MainActivity extends AppCompatActivity {
-LineGraphSeries<DataPoint> series;
+    LineGraphSeries<DataPoint> series;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        double x,y;
-        x=0;
-        GraphView grap = findViewById(R.id.grap1);
+        double x, y;
+        x = 0;
 
-        series= new LineGraphSeries<DataPoint>();
-        for (int i =0; i<500; i++)
-        {
-            x=8;
-            y=2;
-            series.appendData(new DataPoint(x,y),true,500);
-        }
-        grap.addSeries(series);
+        GraphView graph = (GraphView) findViewById(R.id.grap1);
+        LineGraphSeries<DataPoint> series = new LineGraphSeries<>(new DataPoint[]{
+                new DataPoint(0, 1),
+                new DataPoint(1, 5),
+                new DataPoint(2, 3)
+        });
+        graph.addSeries(series);
     }
 }
+
