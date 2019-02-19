@@ -1,5 +1,10 @@
 package com.example.montserratsilva.calculadora_mate_av;
 
+import com.jjoe64.graphview.GraphView;
+import com.jjoe64.graphview.series.DataPoint;
+import com.jjoe64.graphview.series.LineGraphSeries;
+import com.jjoe64.graphview.series.PointsGraphSeries;
+
 public class Complejo {
     private double x;//Parte Real
     private double y;//Parte Imganianria
@@ -9,17 +14,13 @@ public class Complejo {
         this.x=0;
         this.y=0;
     }
-    public Complejo(float x,float y,int tipo) {
-        if(tipo==0)  //Forma algébraica
+    public Complejo(float x,float y) {
+
         {
             this.x = x;
             this.y = y;
         }
-        if(tipo==1)  //Forma trigonometrica
-        {
-            this.x = x;// r
-            this.y = y;// teta
-        }
+
 
 
     }
@@ -73,5 +74,30 @@ public class Complejo {
         Res.setX(((A.getX()*B.getX())+(A.getY()*B.getY()))/div);
         Res.setY((A.getX()*B.getY())/div);
         return Res;
+    }
+    public Complejo Conjugado(Complejo A)
+    {
+        Complejo Res= new Complejo();
+        Res.setX(A.getX());
+        Res.setY(-1*(A.getY()));
+        return Res;
+    }
+    public double  Modulo(Complejo A)
+    {
+       double Res=Math.sqrt(Math.pow(2,A.getX())+Math.pow(2,A.getY()));
+        return Res;
+    }
+    public void Graficar(GraphView graph)
+    {
+        PointsGraphSeries<DataPoint> point = new PointsGraphSeries<>(new DataPoint[] {
+                new DataPoint(this.getX(), this.getY())
+        });
+        point.setShape(PointsGraphSeries.Shape.POINT);
+        LineGraphSeries<DataPoint> vector = new LineGraphSeries<>(new DataPoint[]{
+                new DataPoint(0, 0),
+                new DataPoint(this.getX(), this.getY())
+        });
+        graph.addSeries(point);
+        graph.addSeries(vector);
     }
 }
