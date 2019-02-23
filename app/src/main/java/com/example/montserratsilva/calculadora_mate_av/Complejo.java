@@ -5,24 +5,22 @@ import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
 import com.jjoe64.graphview.series.PointsGraphSeries;
 
+import java.util.ArrayList;
+
 public class Complejo {
     private double x;//Parte Real
     private double y;//Parte Imganianria
-
-    public Complejo()
-    {
-        this.x=0;
-        this.y=0;
-    }
+    private double r;//
+    private double O;//teta
+//Pedientes Encuanto se cree el numero se calcule el real y complejo
     public Complejo(float x,float y) {
 
-        {
             this.x = x;
             this.y = y;
-        }
-
-
-
+    }
+    public Complejo() {
+            this.x = 0;
+            this.y = 0;
     }
 
     public double getX() {
@@ -41,7 +39,19 @@ public class Complejo {
         this.y = y;
     }
 
-    public Complejo(float teta) {//forma de euler
+    public void Euler() {
+
+
+
+
+    }
+    public void Trigo() {
+        this.r= this.Modulo(this);
+        this.O=Math
+
+
+    }
+    public void algebraica() {
 
 
 
@@ -73,6 +83,16 @@ public class Complejo {
         double div=(Math.pow(2,A.getX())+Math.pow(2,B.getY()));
         Res.setX(((A.getX()*B.getX())+(A.getY()*B.getY()))/div);
         Res.setY((A.getX()*B.getY())/div);
+        return Res;
+    }
+    public ArrayList<Complejo> Raiz(Complejo A, int n)
+    {
+        ArrayList<Complejo> Res= new ArrayList();
+        for (int i=0;i<n;i++)
+        {
+
+        }
+
         return Res;
     }
     public Complejo Conjugado(Complejo A)
