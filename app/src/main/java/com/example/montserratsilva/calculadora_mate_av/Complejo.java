@@ -1,6 +1,7 @@
 package com.example.montserratsilva.calculadora_mate_av;
 
 import com.jjoe64.graphview.GraphView;
+import com.jjoe64.graphview.series.BarGraphSeries;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
 import com.jjoe64.graphview.series.PointsGraphSeries;
@@ -13,7 +14,7 @@ public class Complejo {
     private double r;//
     private double O;//teta
 //Pedientes Encuanto se cree el numero se calcule el real y complejo
-    public Complejo(float x,float y) {
+    public Complejo(double x,double y) {
 
             this.x = x;
             this.y = y;
@@ -47,7 +48,7 @@ public class Complejo {
     }
     public void Trigo() {
         this.r= this.Modulo(this);
-        this.O=Math
+
 
 
     }
@@ -113,11 +114,15 @@ public class Complejo {
                 new DataPoint(this.getX(), this.getY())
         });
         point.setShape(PointsGraphSeries.Shape.POINT);
-        LineGraphSeries<DataPoint> vector = new LineGraphSeries<>(new DataPoint[]{
-                new DataPoint(0, 0),
+        BarGraphSeries<DataPoint> vector = new BarGraphSeries<>(new DataPoint[]{
+                new DataPoint(-4, -6),
                 new DataPoint(this.getX(), this.getY())
         });
         graph.addSeries(point);
         graph.addSeries(vector);
+    }
+    public void Graficar(ArrayList<Complejo> lista,GraphView graph)
+    {
+
     }
 }

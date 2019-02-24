@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Calculadora_Mate_Av</string>
+        <string-array name="type">
+            <item>Trigonometrico</item>
+            <item>Aritmetico</item>
+            <item>Euler</item>
+        </string-array>
 </resources>

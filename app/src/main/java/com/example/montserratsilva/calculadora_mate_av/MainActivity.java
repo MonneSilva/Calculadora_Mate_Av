@@ -16,14 +16,14 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         double x, y;
-        x = 0;
+        x = Double.parseDouble(getIntent().getStringExtra("x"));
+        y = Double.parseDouble(getIntent().getStringExtra("y"));
 
         GraphView graph = (GraphView) findViewById(R.id.grap1);
-        graph.getViewport().setScalable(true);//zoom y scroll
-        graph.getViewport().setScalableY(true);
+        //graph.getViewport().setScalable(true);//zoom y scroll
+        //graph.getViewport().setScalableY(true);;
 
-        Complejo a= new Complejo(4,1);
-        a.Suma(a,new Complejo(-3,5)).Graficar(graph);
+
 
     }
 }
