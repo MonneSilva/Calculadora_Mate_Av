@@ -1,8 +1,17 @@
 <resources>
-    <string name="app_name">Calculadora_Mate_Av</string>
-        <string-array name="type">
-            <item>Trigonometrico</item>
-            <item>Aritmetico</item>
-            <item>Euler</item>
-        </string-array>
+    <string name="app_name">Calculadora de Complejos</string>
+    <string-array name="type">
+        <item>Algebraica</item>
+        <item>Trigonometrica</item>
+        <item>Euler</item>s
+    </string-array>
+
+
+    <string name="simple_ime">Simple IME</string>
+    <string name="subtype_en_US">English (US)</string>
+    <string name="title_activity_main2">Main2Activity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+
 </resources>

@@ -13,11 +13,24 @@
         android:layout_marginTop="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:height="270dp"
+        android:textSize="35dp"
         android:padding="10dp"
-        android:textSize="40dp"
-        android:text=""
+        android:hint="(x+yi)"
         />
+    <TextView
+        android:id="@+id/Resultado"
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:height="200dp"
+        android:padding="10dp"
+        android:text=""
+        android:textSize="35dp"
+        android:scrollbars = "vertical"
+        android:textAlignment="textEnd"
+        android:textColor="#C6007B"
+
+        android:gravity="end" />
     <GridLayout
         android:id="@+id/Teclado"
         android:layout_marginTop="20dp"
@@ -44,15 +57,15 @@
             android:text="CE"
             />
         <Button
-            android:id="@+id/Entre"
+            android:id="@+id/Raiz"
             android:layout_margin="2dp"
-            android:text="÷"
+            android:text="√"
             android:textColor="#FF5722" />
         <Button
-            android:id="@+id/Por"
+            android:id="@+id/Entre"
             android:layout_margin="2dp"
             android:textAllCaps="false"
-            android:text="x" />
+            android:text="÷" />
         <Button
             android:id="@+id/Siete"
             android:layout_margin="2dp"
@@ -78,10 +91,10 @@
             android:text="9"
             />
         <Button
-            android:id="@+id/Mas"
+            android:id="@+id/Por"
 
             android:layout_margin="2dp"
-            android:text="+"
+            android:text="x"
             android:textColor="#FF5722" />
         <Button
             android:id="@+id/Cuatro"
@@ -108,9 +121,9 @@
             android:textAllCaps="false"
             />
         <Button
-            android:id="@+id/Menos"
+            android:id="@+id/Mas"
             android:layout_margin="2dp"
-            android:text="-"
+            android:text="+"
             android:textColor="#FF5722" />
         <Button
             android:id="@+id/Uno"
@@ -139,8 +152,8 @@
             android:textAllCaps="false"
             />
         <Button
-            android:id="@+id/Igual"
-            android:text="="
+            android:id="@+id/Menos"
+            android:text="-"
             android:layout_margin="2dp"
 
             android:textColor="#FF5722" />
@@ -169,16 +182,18 @@
             android:text="."
             />
         <Button
-            android:id="@+id/ANS"
-            android:text="ANS"
+            android:id="@+id/Igual"
+            android:text="="
             android:layout_margin="2dp"
             android:textColor="#FF5722" />
+
         <Button
             android:id="@+id/Graph"
             android:layout_width="match_parent"
             android:layout_columnSpan="4"
             android:layout_margin="2dp"
             android:text="Graficar"
+
             />
 
 
