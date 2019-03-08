@@ -34,6 +34,7 @@ public class Inicio extends AppCompatActivity {
     Spinner spinner;
     ArrayAdapter<CharSequence> adapter;
     String[] simbolos = {"(", ")", ",", "+", "-", "x", "/", "°", "c", "e", "i", "^", "π", "√", "'", "|"};
+    Complejo Aux;
 
 
     public String setPantalla(String string) {
@@ -76,9 +77,11 @@ public class Inicio extends AppCompatActivity {
 
 
 
+
         Resultados = (TextView) findViewById(R.id.Resultado);
         Resultados.setMovementMethod(new ScrollingMovementMethod());
         btnPunto = (Button) findViewById(R.id.Punto);
+
         btnIgual = (Button) findViewById(R.id.Igual);
         btnRaiz = (Button) findViewById(R.id.Raiz);
 
@@ -110,8 +113,9 @@ public class Inicio extends AppCompatActivity {
                     btnSiete.setText("sen");
                     btnOcho.setText("cos");
                     btnNueve.setText("°");
-                    //btnNueve.setEnabled(false);
-                    btnPunto.setText("Conv");
+
+                    btnPunto.setText("Ans");
+                    //btnPunto.setEnabled(false);
                     indice = 1;
                 } else {
                     btnCero.setText("0");
@@ -138,6 +142,7 @@ public class Inicio extends AppCompatActivity {
                 cont = 0;
                 Resultados.setText("");
                 btnGra.setEnabled(false);
+                //btnPunto.setEnabled(false);
                 Res = new Complejo(0, 0);
 
 
@@ -151,6 +156,7 @@ public class Inicio extends AppCompatActivity {
                 Resultado.setText(removeLastCharRegex(Resultado.getText().toString()));
                 Resultados.setText("");
                 btnGra.setEnabled(false);
+                //btnPunto.setEnabled(false);
                 Res = new Complejo(0, 0);
 
 
@@ -295,9 +301,12 @@ public class Inicio extends AppCompatActivity {
         btnPunto.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 if (indice == 1) {
-                   Resultado.setText(setPantalla("c"));
+                    Resultado.setText("ANS");
+                   Aux=Res;
+                    btnPunto.setEnabled(false);
                 } else {
                     Resultado.setText(setPantalla("."));
+
                 }
             }
         });
@@ -313,7 +322,19 @@ public class Inicio extends AppCompatActivity {
             public void onClick(View v) {
                 pantalla = Resultado.getText().toString() + " ";
                 String Res1 = "";
-                if (comprobar() == true) {
+                if(Resultado.getText().toString().equals("ANS"))
+                {
+                    Res=Aux;
+                    if ((adapter.getItem(0).toString().equals(texto))) {
+                        type = 1;}
+                        else if ((adapter.getItem(1).toString().equals(texto))) {
+                    type = 2;
+                } else if ((adapter.getItem(2).toString().equals(texto))) {
+                    type = 3;
+                }
+                    Resultados.setText(Res.imprimir(type));
+                }
+                else if (comprobar() == true) {
 
                     if (ope == 1) {
                         for (int i = 0; i < ResR.length; i++) {
@@ -332,13 +353,16 @@ public class Inicio extends AppCompatActivity {
 
 
                     btnGra.setEnabled(true);
+                   // btnPunto.setEnabled(true);
                 } else {
 
                     Resultados.setText("Syntax Error");
                     btnGra.setEnabled(false);
+                  //  btnPunto.setEnabled(false);
                 }
                 cont = 0;
             }
+
         });
 
         btnGra.setOnClickListener(new View.OnClickListener() {
@@ -418,6 +442,11 @@ public class Inicio extends AppCompatActivity {
             {
 
                 operacion(aux, a, null, 0);
+                return true;
+            }
+            else{
+                Res=a;
+                operacion("0", a, null, 0);
                 return true;
             }
 
@@ -765,7 +794,119 @@ public class Inicio extends AppCompatActivity {
                 }
 
             }
-        }
+        }else if ((adapter.getItem(2).toString().equals(texto))) {
+            type = 3;
+            //e^(#)i
+           // String[] simbolos = {"(", ")", ",", "+", "-", "x", "/", "°", "c", "e", "i", "^", "π", "√", "'", "|"};
+            cont=0;
+            dato=leerDato();
+
+            if (dato >= 48 && dato <= 57 || dato == 45) //[0-9] ó -
+            {
+                String aux = "" + dato;
+                dato = leerDato();
+                while (dato >= 48 && dato <= 57)//[0-9]+
+                {
+                    aux += dato;
+                    dato = leerDato();
+                    //)?
+
+                }
+                if (dato == 46) //(\.
+                {
+                    String auxs = "";
+                    dato = leerDato();
+                    if (dato >= 48 && dato <= 57) {//es numero
+                        auxs += dato;
+                        dato = leerDato();
+                        while (dato >= 48 && dato <= 57)//[0-9]+
+                        {
+                            auxs += dato;
+                            dato = leerDato();
+                        }
+                        aux += "." + auxs;
+                    }
+                }
+
+                double r = Double.parseDouble(aux);
+                cont--;
+                auxi=leerDato()+"";
+
+            if (auxi.equals(simbolos[9])) //e
+            {
+                a.setR(r);
+
+                auxi=leerDato()+"";
+
+                if (auxi.equals(simbolos[11])) //^
+                {
+                    auxi=leerDato()+"";
+
+                    if (auxi.equals(simbolos[0])) //(
+                    {
+
+                dato = leerDato();//pedimos otro caracter
+
+                //-----------Comprobamos si es r es un numero
+
+               if (dato >= 48 && dato <= 57 || dato == 45) //[0-9] ó -
+                {
+                    aux = "" + dato;
+                    dato = leerDato();
+                    while (dato >= 48 && dato <= 57)//[0-9]+
+                    {
+                        aux += dato;
+                        dato = leerDato();
+                        //)?
+
+                    }
+                    if (dato == 46) //(\.
+                    {
+                        String auxs = "";
+                        dato = leerDato();
+                        if (dato >= 48 && dato <= 57) {//es numero
+                            auxs += dato;
+                            dato = leerDato();
+                            while (dato >= 48 && dato <= 57)//[0-9]+
+                            {
+                                auxs += dato;
+                                dato = leerDato();
+                            }
+                            aux += "." + auxs;
+                        }
+                    }
+
+                    double teta1 = Double.parseDouble(aux);
+                    cont--;
+
+                auxi=leerDato()+"";
+                        boolean grados=false;
+                        if(auxi.equals(simbolos[7]))//esta en grados
+                        {
+                            grados=true;
+                        }else
+                        {
+                            cont--;
+                            grados=false;
+                        }
+
+                dato = leerDato();//pedimos otro caracter
+                auxi = dato + "";
+
+                if (auxi.equals(simbolos[1]))//)
+                {
+                    auxi = leerDato() + "";
+                    if (auxi.equals(simbolos[10]))//i
+                    {
+                        if (grados == true) {
+                            a.setO(teta1);
+                        } else {
+                            a.setO(teta1 * 57.2958);
+                        }
+                        return a;
+                    }
+                }}}}}}}
+
       return null;
 
         }
