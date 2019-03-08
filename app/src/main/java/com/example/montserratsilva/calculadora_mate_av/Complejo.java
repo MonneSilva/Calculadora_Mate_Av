@@ -21,7 +21,7 @@ public final class Complejo implements Serializable {
     private double y;//Parte Imganianria
     private double r;//
     private double O;//teta
-    //Pedientes Encuanto se cree el numero se calcule el real y complejo
+
     public Complejo(double x,double y) {
         this.x = x;
         this.y = y;
@@ -38,7 +38,7 @@ public final class Complejo implements Serializable {
     }
 
     public double getX() {
-        return round(x,2);
+        return x;
     }
 
     public void setX(double x) {
@@ -46,7 +46,7 @@ public final class Complejo implements Serializable {
     }
 
     public double getY() {
-        return round(y,2);
+        return y;
     }
 
     public void setY(double y) {
@@ -54,7 +54,7 @@ public final class Complejo implements Serializable {
     }
 
     public double getR() {
-        return round(2,2);
+        return r;
     }
 
     public void setR(double r) {
@@ -62,22 +62,19 @@ public final class Complejo implements Serializable {
     }
 
     public double getO() {
-        return round(O,2);
+        return O;
     }
 
     public void setO(double o) {
         O = o;
     }
 
-    public void toEuler() {
-
-
-
-
-    }
     public void toTrigo() {
         this.r= this.Modulo(this);
-        this.O=Math.toDegrees(Math.atan((this.y/this.r)/(this.x/this.r)));
+       // this.O=Math.toDegrees(Math.atan((this.y/this.r)/(this.x/this.r)));
+        //this.O=Math.toDegrees(Math.atan(this.y/this.x));
+
+         this.O=Math.atan((this.y/this.r)/(this.x/this.r));
 
     }
     public void toalgebraica() {
@@ -122,15 +119,20 @@ public final class Complejo implements Serializable {
     public Complejo[] Raiz(Complejo A, int n)
     {
        Complejo[] Res = new Complejo[n];
-
-        for (int k=0;k<n;k++)
+        if (n == 1)
         {
-            Complejo Temp= new Complejo();
-            Temp.setR(Math.pow(this.getR(),1.0/n));
-            Temp.setO(((this.getO()+(2*k*Math.PI))/n));
-            Temp.toalgebraica();
-            Res[k]=Temp;
-            Temp.toTrigo();
+            Res[0]=A;
+        }else {
+
+
+            for (int k = 0; k < n; k++) {
+                Complejo Temp = new Complejo();
+                Temp.setR(Math.pow(this.getR(), 1.0 / n));
+                Temp.setO(((this.getO() + (2 * k * Math.PI)) / n));
+                Temp.toalgebraica();
+                Res[k] = Temp;
+                Temp.toTrigo();
+            }
         }
         return Res;
     }
@@ -145,8 +147,8 @@ public final class Complejo implements Serializable {
     public Complejo Elevado(Complejo A,int n)
     {
         Complejo Res= new Complejo();
-        Res.setX(A.getR()*Math.cos(A.getO()));
-        Res.setY(A.getR()*Math.sin(A.getO()));
+        Res.setX(Math.pow(A.getR(),n)*Math.cos(A.getO()*n));
+        Res.setY(Math.pow(A.getR(),n)*Math.sin(A.getO()*n));
         Res.toTrigo();
         return Res;
     }
@@ -184,25 +186,25 @@ public final class Complejo implements Serializable {
         if (type==1) {
 
             Result = this.getX() + " ";
-            if (this.getY() > 0) {
-                Result += " +" + this.getY() + "i";
+            if (this.getY() >= 0) {
+                Result += " +" + round(this.getY(),2) + "i";
             } else if (this.getY() < 0) {
-                Result += this.getY() + "i";
+                Result += round(this.getY(),2) + "i";
             }
         }else if(type==2) {
 
             if (this.getR() == 1) {
-                Result = "( cos(" + this.getO() + ")+ i sen(" + this.getO() + ")";
+                Result = "( cos(" + round(this.getO(),2) + ")+ i sen(" + round(this.getO(),2) + ")";
             } else {
-                Result = this.getR() + "( cos(" + this.getO() + "°)+ i sen(" + this.getO() + "° )";
+                Result = round(this.getR(),2) + "( cos(" + round(this.getO(),2)+ "°)+ i sen(" + round(this.getO(),2) + "° )";
             }
         }
         else if(type==3) {
              if(this.getR()==1)
                  {
-                     Result= "e^("+this.getO()+")i";
+                     Result= "e^("+round(this.getO(),2)+")i";
                  }else {
-                     Result = this.getR() + "e^("+this.getO()+"°)i";
+                     Result = round(this.getR(),2) + "e^("+round(this.getO(),2)+"°)i";
                  }
         }
 
