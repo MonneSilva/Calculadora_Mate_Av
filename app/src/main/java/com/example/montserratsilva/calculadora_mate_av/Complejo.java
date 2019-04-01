@@ -62,6 +62,10 @@ public final class Complejo implements Serializable {
     }
 
     public double getO() {
+        if(O<0)
+        {
+            O=O*-1+180;
+        }
         return O;
     }
 
@@ -71,10 +75,9 @@ public final class Complejo implements Serializable {
 
     public void toTrigo() {
         this.r= this.Modulo(this);
-       // this.O=Math.toDegrees(Math.atan((this.y/this.r)/(this.x/this.r)));
+       this.O=Math.toDegrees(Math.atan((this.y/this.r)/(this.x/this.r)));
         //this.O=Math.toDegrees(Math.atan(this.y/this.x));
-
-         this.O=Math.atan((this.y/this.r)/(this.x/this.r));
+       // this.O=Math.atan((this.y/this.r)/(this.x/this.r));
 
     }
     public void toalgebraica() {
@@ -107,15 +110,22 @@ public final class Complejo implements Serializable {
         Res.toTrigo();
         return Res;
     }
-    public Complejo Division(Complejo A, Complejo B)
+    public Complejo Division(Complejo A, Complejo B,int type)
     {
         Complejo Res= new Complejo();
+        if(type==1){
         double div=(Math.pow(2,A.getX())+Math.pow(2,B.getY()));
         Res.setX(((A.getX()*B.getX())+(A.getY()*B.getY()))/div);
         Res.setY((A.getX()*B.getY())/div);
-        Res.toTrigo();
+        Res.toTrigo();}else{
+            Res.setR(A.getR()/B.getR());
+            Res.setO(A.getO()-B.getO());
+            Res.toalgebraica();
+
+        }
         return Res;
     }
+
     public Complejo[] Raiz(Complejo A, int n)
     {
        Complejo[] Res = new Complejo[n];
@@ -187,24 +197,24 @@ public final class Complejo implements Serializable {
 
             Result = this.getX() + " ";
             if (this.getY() >= 0) {
-                Result += " +" + round(this.getY(),2) + "i";
+                Result += " +" + Math.round(this.getY()) + "i";
             } else if (this.getY() < 0) {
-                Result += round(this.getY(),2) + "i";
+                Result += Math.round(this.getY()) + "i";
             }
         }else if(type==2) {
 
             if (this.getR() == 1) {
-                Result = "( cos(" + round(this.getO(),2) + ")+ i sen(" + round(this.getO(),2) + ")";
+                Result = "( cos(" + Math.round(this.getO()) + ")+ i sen(" + Math.round(this.getO()) + ")";
             } else {
-                Result = round(this.getR(),2) + "( cos(" + round(this.getO(),2)+ "°)+ i sen(" + round(this.getO(),2) + "° )";
+                Result = Math.round(this.getR()) + "( cos(" + Math.round(this.getO())+ "°)+ i sen(" + Math.round(this.getO()) + "° )";
             }
         }
         else if(type==3) {
              if(this.getR()==1)
                  {
-                     Result= "e^("+round(this.getO(),2)+")i";
+                     Result= "e^("+Math.round(this.getO())+")i";
                  }else {
-                     Result = round(this.getR(),2) + "e^("+round(this.getO(),2)+"°)i";
+                     Result = Math.round(this.getR()) + "e^("+Math.round(this.getO())+"°)i";
                  }
         }
 

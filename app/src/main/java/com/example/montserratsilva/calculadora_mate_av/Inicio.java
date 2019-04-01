@@ -30,6 +30,7 @@ public class Inicio extends AppCompatActivity {
     double z, Res2;
     Complejo Res, c2, Raiz;
     Complejo[] ResR;
+    Complejo[] Auxs;
     String texto, pantalla = "";
     Spinner spinner;
     ArrayAdapter<CharSequence> adapter;
@@ -80,6 +81,7 @@ public class Inicio extends AppCompatActivity {
 
         Resultados = (TextView) findViewById(R.id.Resultado);
         Resultados.setMovementMethod(new ScrollingMovementMethod());
+        Resultado.setMovementMethod(new ScrollingMovementMethod());
         btnPunto = (Button) findViewById(R.id.Punto);
 
         btnIgual = (Button) findViewById(R.id.Igual);
@@ -302,8 +304,10 @@ public class Inicio extends AppCompatActivity {
             public void onClick(View v) {
                 if (indice == 1) {
                     Resultado.setText("ANS");
+
                    Aux=Res;
-                    btnPunto.setEnabled(false);
+                   Auxs=ResR;
+                  //btnPunto.setEnabled(false);
                 } else {
                     Resultado.setText(setPantalla("."));
 
@@ -345,7 +349,8 @@ public class Inicio extends AppCompatActivity {
 
                     } else if (ope == 2) {
                         btnGra.setEnabled(false);
-                        Resultados.setText(round(Res2,2) + "");
+
+                        Resultados.setText(Math.round(Res2)+ "");
                     } else {
                         Resultados.setText(Res.imprimir(type));
 
@@ -899,9 +904,9 @@ public class Inicio extends AppCompatActivity {
                     if (auxi.equals(simbolos[10]))//i
                     {
                         if (grados == true) {
-                            a.setO(teta1);
+                            a.setO(Math.toRadians(teta1));
                         } else {
-                            a.setO(teta1 * 57.2958);
+                            a.setO(teta1);
                         }
                         return a;
                     }
@@ -946,7 +951,7 @@ if(ope.equals(simbolos[3]))
 }
 else if(ope.equals(simbolos[6]))
 {
-    Res=a.Division(a,b);
+    Res=a.Division(a,b,type);
     this.ope=0;
 
 }
