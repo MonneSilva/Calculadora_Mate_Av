@@ -1,0 +1,33 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_alignParentStart="true"
+    android:layout_alignParentTop="true"
+    android:orientation="vertical"
+    android:layout_alignParentLeft="true"
+    android:textColor="#FF5722">
+    <Button
+        android:id="@+id/btnComplej"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="2dp"
+        android:text="Complejos"
+        />
+    <Button
+    android:id="@+id/btnRK4"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="2dp"
+    android:text="RK4"
+    />
+        <Button
+            android:id="@+id/btnInteg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="2dp"
+            android:text="Integrales"
+             />
+
+
+</LinearLayout>

@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_alignParentLeft="true"
+    android:layout_alignParentStart="true"
+    android:padding="25dp"
+    android:layout_alignParentTop="true"
+    android:orientation="vertical"
+    android:textColor="#FF5722">
+
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:textColor="#FF5722">
+
+        <TextView
+            android:layout_width="29dp"
+            android:layout_height="wrap_content"
+            android:text="y("
+            android:textAlignment="center"
+            android:textSize="22dp" />
+
+        <EditText
+            android:id="@+id/X0"
+            android:layout_width="33dp"
+            android:layout_height="wrap_content"
+            android:hint=""
+            android:textSize="22dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=")= "
+            android:textAlignment="center"
+            android:textSize="22dp" />
+
+        <EditText
+            android:id="@+id/V_ini"
+            android:layout_width="240dp"
+            android:layout_height="wrap_content"
+            android:hint="valor inicial"
+            android:textSize="22dp" />
+
+</LinearLayout>
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:textColor="#FF5722">
+
+        <TextView
+            android:layout_width="73dp"
+            android:layout_height="wrap_content"
+            android:text="h="
+            android:textAlignment="center"
+            android:textSize="22dp" />
+
+        <EditText
+            android:id="@+id/Paso"
+            android:layout_width="240dp"
+            android:layout_height="wrap_content"
+            android:hint="paso"
+            android:textSize="22dp" />
+
+    </LinearLayout>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:textColor="#FF5722">
+
+        <TextView
+            android:id="@+id/Text1"
+            android:layout_width="74dp"
+            android:layout_height="wrap_content"
+            android:text="y'="
+            android:textAlignment="center"
+            android:textSize="22dp" />
+
+        <EditText
+            android:id="@+id/fx"
+            android:layout_width="240dp"
+            android:layout_height="wrap_content"
+            android:hint="f(x,y)"
+            android:textSize="22dp" />
+
+    </LinearLayout>
+
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:textColor="#FF5722">
+
+        <TextView
+            android:layout_width="133dp"
+            android:layout_height="wrap_content"
+            android:text="Aproximar"
+            android:textAlignment="center"
+            android:textSize="22dp" />
+        <TextView
+            android:layout_width="28dp"
+            android:layout_height="wrap_content"
+            android:text="y("
+            android:textAlignment="center"
+            android:textSize="22dp" />
+
+        <EditText
+            android:id="@+id/Xn"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:textSize="22dp" />
+
+        <TextView
+            android:layout_width="21dp"
+            android:layout_height="wrap_content"
+            android:text=")"
+            android:textAlignment="center"
+            android:textSize="22dp" />
+
+    </LinearLayout>
+
+
+    <Button
+        android:id="@+id/btnCalcu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Calcular" />
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:id="@+id/layoutTabla"
+        android:gravity="center">
+
+        <ScrollView
+            android:id="@+id/scrollvertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:scrollbars="vertical"
+            android:layout_weight="1">
+
+            <HorizontalScrollView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/scrollhorizontal"
+                android:scrollbars="horizontal"
+                android:layout_weight="1">
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <TableLayout
+                        android:id="@+id/tabla"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                    </TableLayout>
+                </LinearLayout>
+            </HorizontalScrollView>
+
+        </ScrollView>
+
+    </LinearLayout>
+
+</LinearLayout>
